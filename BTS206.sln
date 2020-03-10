@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFileManager", "MyFileMana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewFileManager", "NewFileManager\NewFileManager.csproj", "{D2857A99-5345-4092-865E-7FC377C80E79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorApp", "EditorApp\EditorApp.csproj", "{BB9B543A-03DF-461C-80DF-8A55B914B739}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D2857A99-5345-4092-865E-7FC377C80E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2857A99-5345-4092-865E-7FC377C80E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2857A99-5345-4092-865E-7FC377C80E79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB9B543A-03DF-461C-80DF-8A55B914B739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB9B543A-03DF-461C-80DF-8A55B914B739}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB9B543A-03DF-461C-80DF-8A55B914B739}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB9B543A-03DF-461C-80DF-8A55B914B739}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
