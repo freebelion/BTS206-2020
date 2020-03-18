@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorApp", "EditorApp\Edit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyunProje", "OyunProje\OyunProje.csproj", "{93167464-8270-4E70-887F-901817C30C05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuApp", "SudokuApp\SudokuApp.csproj", "{65A607DC-634B-4934-BF45-D3B81C6BFEC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{93167464-8270-4E70-887F-901817C30C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93167464-8270-4E70-887F-901817C30C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93167464-8270-4E70-887F-901817C30C05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65A607DC-634B-4934-BF45-D3B81C6BFEC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65A607DC-634B-4934-BF45-D3B81C6BFEC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65A607DC-634B-4934-BF45-D3B81C6BFEC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65A607DC-634B-4934-BF45-D3B81C6BFEC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
