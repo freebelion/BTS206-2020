@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            font-family: "Courier New", Courier, monospace;
+        }
+        .auto-style2 {
+            font-family: "Courier New", Courier, monospace;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif">
+
+    <p>
+        CalculatorApp Projesi Hakkında</p>
+    <ul>
+        <li>Bu projede yalnızca kodlar aracılığıyla bir hesap makinesi formu oluşturuyoruz.</li>
+        <li>Hesap makinesi formu sonuçların görüntüleneceği bir metin kutusu ve rakam ve işlem düğmeleri içeriyor.</li>
+        <li>Amacımız yanlızca hesap makinesi görünümlü bir form oluşturmak olduğu için, yalnızca toplama + işlem düğmesi ve işlem gerçekleştiren = düğmesi yer alıyor.<ul>
+            <li>Ne toplama düğmesi, ne de işlem düğmesinin bir işlevi yoktur. Projeyi izleyenler bunlara işlev kazandıracak kodları ekleyebilir :-)</li>
+            </ul>
+        </li>
+        <li>Sonuç ekranı <span class="auto-style2">tbEkran</span> adlı bir metin kutusu (<span class="auto-style2">TextBox</span>) kontrolüyle temsil ediliyor.</li>
+        <li>Hesap makinesi düğmeleri <span class="auto-style1"><strong>dugmeler</strong></span> adlı <span class="auto-style1"><strong>Button[]</strong></span> türü bir dizi değişkeni ile temsil ediliyor.<ul>
+            <li>C# programlama dilinde bir dizi değişkeni belirtilen türden nesnelerden oluşan bir dizinin referansını içerir. Yani kendisi aslında bir hafıza adresi taşıyan bir referans değişkenidir ki o da bir tamsayı değerle eşdeğerdir.</li>
+            </ul>
+        </li>
+        <li>Hem sonuç ektranını temsil eden metin kutusu kontrolü, hem de rakam ve işlem düğmelerini temsil eden düğme kontrollerini <span class="auto-style2">KontrolleriOlustur</span> adlı fonksiyonda, kodlarla oluşturuyoruz.</li>
+        <li>Görsel kontroller basit sayısal değerler olmayıp, kendilerine ait bilgileri saklayan üye değişkenleri ve davranışlarını belirleyen fonksiyon kodları olan nesnelerdir.<ul>
+            <li>Dolayısıyla, bu nesneleri temsil eden değişkenler aslında nesnelerin hafıza adreslerini taşıyan referans değişkenleridir.</li>
+            <li>Referans değişkenini tanımlamakla (örneğin: <span class="auto-style2">TextBox tbEkran;</span>) nesneyi oluşturmuş olmazsınız.</li>
+            <li>Nesneyi oluşturmak için <span class="auto-style2">new()</span> işlemcisini kullanırsınız (örneğin:<span class="auto-style2"> tbEkran = new TextBox();</span>)</li>
+            </ul>
+        </li>
+        <ul>
+            <li>Oluşturduğunuz nesne bir görsel kontrol ise, bu kontrolü form üzerine eklemek için form nesnesine ait <span class="auto-style2">Controls</span> koleksyonuna eklemelisiniz: <span class="auto-style2">this.Controls.Add(tbEkran);</span></li>
+            <li>Bir nesne dizisi için, önce diziyi oluşturmalısınız: <span class="auto-style2">dugmeler = new Button[12];</span></li>
+            <li>Bunu yaptığınızda elinizde kutu parantezler içinde belirttiğiniz sayıda elemanı olan bir dizi olacaktır, ama o elemanların kendileri birer nesne değil, o nesneleri temsil edecek referans değişkenleridir.</li>
+            <li>Gerçek düğme kontrollerini oluşturmak için bir döngü içinde her dizi elemanına karşılık bir düğme (<span class="auto-style2">Button</span>) kontrolü oluşturmalısınız: <span class="auto-style2">dugmeler[i] = new Button();</span></li>
+        </ul>
+        <li>Bu projede hesap makinesi formuna ve form kontrollerine ait özellikleri kodlarla belirliyoruz:<ul>
+            <li>Örneğin, formun boyutlandırılabilir bir araç kutusu gibi gözükmesi için <span class="auto-style2">FormBorderStyle</span> özelliğine atama yapıyoruz: <span class="auto-style2">this.FormBorderStyle = FormBorderStyle.SizableToolWindow;</span></li>
+            <li>Bu özellik <span class="auto-style2">FormBorderStyle</span> adlı bir adlandırılmış gruptaki (<span class="auto-style2">enum</span>) bir değer alır. Normal bir form penceresi için bu gruptan <span class="auto-style2">Sizeable</span> değerini, sabit boyutlu bir form penceresi için <span class="auto-style2">FixedSingle</span> (düz kenarlık) veya <span class="auto-style2">Fixed3D</span> (çıkıntılı kenarlık) seçeneklerini kullanırsınız. Başlık çubuğunda küçültme ve büyültme düğmeleri olmayıp, yalnızca kapatma düğmesi olan bir araç kutusu (Toolbox) tip pencere için de <span class="auto-style2">FixedToolWindow</span> (sabit boyutlu) veya <span class="auto-style2">SizeableToolWindow</span> (boyutlandırılabilir) seçeneklerini kullanırsınız.</li>
+            <li>Hesap makinesi ekranını temsil eden metin kutusunun içine elle yazılmasın diye onu yalnızca okunur yapıyoruz: <span class="auto-style2">tbEkran.ReadOnly = true;</span></li>
+            <li><span class="auto-style2">ReadOnly</span> özelliğine <span class="auto-style2">true</span> değeri atanmışsa, metin kutusunun içeriği yalnızca kodlarla değiştirilebilir. Bu özellik değeri <span class="auto-style2">false</span> ise kullanıcı bu kutu içinde kendisi bir şeyler yazabilir. Normalde bir kullanıcıdan yazılı bilgi alınacağı zaman metin kutusunun bu özelliğine dokunmazsınız ki özellik değeri varsayılan <span class="auto-style2">false</span> değerde kalsın.</li>
+            <li>Düğme kontrollerinin de etiketlerinde rakam veya işlem sembolleri gözüksün diye <span class="auto-style2">Text</span> özelliklerine atama yapıyoruz. Bir düğme kontrolü için <span class="auto-style2">Text</span> özelliği düğme üzerindeki etiket metnidir. Bu projede döngü içindeki sayaç değerini rakam karakterine dönüştürerek etiket belirliyoruz: <span class="auto-style2">dugmeler[i].Text = (i + 1).ToString();</span></li>
+            </ul>
+        </li>
+        <li>Form ve kontrol konumlarını da kodlarla belirliyoruz:<ul>
+            <li>Kontrol konumlarını yatay koordinatı belirleyen <span class="auto-style2">Left</span> ve dikey koordinatı belirleyen <span class="auto-style2">Top</span> özellikleriyle ayarlanır.</li>
+            <li><span class="auto-style2">Left</span> özelliği kontrol sol kenarının form iç bölgesininin sol kenarından uzaklığını belirler: <span class="auto-style2">tbEkran.Left = BOS;</span> (<span class="auto-style2">BOS</span> sabit bir tamsayı değerdir; proje formunda kontroller arasında kalacak boşluğun bir ölçüsüdür)</li>
+            <li><span class="auto-style2">Top</span> özelliği kontrol üst kenarının form iç bölgesinin üst kenarından uzaklığını belirler: <span class="auto-style2">tbEkran.Top = BOS;</span></li>
+            <li>Bu projede denemedik, ama isterseniz bir kontrolün hem yatay, hem de dikay koordinatlarını Location özelliğiyle de belirleyebilirsiniz. Bu özelliğe değer atamak için kontrolün sol üst köşesini temsil edecek bir nokta (Point) nesnesi oluşturursunuz: <span class="auto-style2">tbEkran.Location = new Point(BOS, BOS);</span> Nokta nesnesi oluştuturken kullandığınız ilk değerler kontrolün sol üst köşe koordinatları (<span class="auto-style2">Left</span> ve <span class="auto-style2">Top</span>) olacaktır.</li>
+            <li>Yine bu projede denemediğimiz bir başka bilgi: Bir form için <span class="auto-style2">Left</span> ve <span class="auto-style2">Top</span> (ve sol üst köşe koordinatlarını belirleyen <span class="auto-style2">Location</span>) özellikleri pencerenin ekran üzerindeki konumunu belirleyecektir.</li>
+            </ul>
+        </li>
+        <li>Form ve kontrol boyutlarını da kodlarla belirliyoruz:<ul>
+            <li><span class="auto-style2">Width</span> özelliğiyle genişlik belirliyoruz: <span class="auto-style2">dugmeler[k].Width = duggen;</span> (<span class="auto-style2">duggen</span> değeri form boyutuna göre belirlenmiş düğme genişliği değeridir).</li>
+            <li><span class="auto-style2">Height</span> özelliğiyle yükseklik belirliyoruz: <span class="auto-style2">dugmeler[k].Height = dugyuk;</span> (<span class="auto-style2">dugyuk</span> değeri form boyutuna göre belirlenmiş düğme yüksekliği değeridir).</li>
+            <li>Kontrolün her iki boyutunu tek bir komutla belirlemek için de <span class="auto-style2">Size</span> özelliğini kullanabilirsiniz. Bu özelliğe değer atamak için yatay ve dikey boyutlarla yeni bir <span class="auto-style2">Size</span> nesnesi oluşturmalısınız: <span class="auto-style2">dugmeler[k].Size = new Size(duggen, dugyuk);</span></li>
+            <li>Bir form penceresinin boyutlarını da <span class="auto-style2">Width</span>, <span class="auto-style2">Height</span> veya <span class="auto-style2">Size</span> özellikleriyle beklirleyebilirsiniz. Bu şekilde formun dış çerçeve boyutlarını belirlemiş olursunuz. Kontrolleri bardındıran iç dörtgenin boyutlarına da form nesnesine ait <span class="auto-style2">ClientRectangle</span> özelliğinden, bunun altındaki <span class="auto-style2">Width</span>, <span class="auto-style2">Height</span> ve <span class="auto-style2">Size</span> özelliklerinden erişebilirsiniz.</li>
+            </ul>
+        </li>
+        <li>Bu projede form ve kontrollerin etkileşim olaylarını yanıtlayacak fonksiyonları da kodlarla belirledik.</li>
+    </ul>
+
+</body>
+</html>
