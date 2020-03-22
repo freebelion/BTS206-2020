@@ -25,6 +25,7 @@ namespace ListeFormApp
 
         private void ListeForm_Load(object sender, EventArgs e)
         {
+            lbListe.SelectionMode = SelectionMode.
         }
 
         private void lbListe_KeyDown(object sender, KeyEventArgs e)

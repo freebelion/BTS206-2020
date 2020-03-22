@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif">
+
+    <h1>MyFileManager Projesi Hakkında</h1>
+    <ul>
+        <li>Bu projede bir açılır liste kutusu (<strong>ComboBox</strong>) kontrolü ile bir açık lste kutusu (<strong>ListBox</strong>) kontrolünü birlikte kullanıyoruz.</li>
+        <li>Dock özelliklerini kullanarak, açılır liste kutusunu form penceresinin üst kenarına tutturduk (<strong>DockStyle.Top</strong>), liste kutusunun da formun geri kalanını doldurmasını (<strong>DockStyle.Fill</strong>) sağladık.</li>
+        <li>Açılır liste kutusu kontrolü <strong>cbKlasorler</strong> dosya sistemindeki klasörleri, açık liste kutusu <strong>lbDosyalar</strong> ise seçilen klasör içindeki dosyaları listelemek içindi.</li>
+        <li>Dosya sistemindeki klasör ve dosyalarla ilgili bilgilere erişim sağlayacak sınıf tanımlarını kullanmak için form kod dosyasına <strong>using System.IO;</strong> kütüphane referansını ekledik.<ul>
+            <li><strong>using</strong> ile eklenen bir referans sayesinde eklenen kütüphanedeki sınıf tanımları (yani nesne türleri) ayrıca kütüphanenin adını belirtmeden kullanılabilir. Yani <strong>using</strong> referansı olmayınca oradakli tanımlar kullanılamaz diye bir şey yoktur.</li>
+            <li>Aslında <strong>using</strong> ile bir ad uzayına (<strong>namespace</strong>) referans yapılır, ama şimdilik bu ayrıma kafa yormayacağız.</li>
+            </ul>
+        </li>
+        <li>Bir klasörün bilgilerine erişmek için o klasörü temsil eden bir <strong>DirectoryInfo</strong> nesnesi tanımladık. <strong>FileInfo</strong> türü nesneleri de dosya bilgilerine erişmek için kullandık. Bu türlerin ikisinin de tanımları <strong>System.IO</strong> kütüphanesinde bulunur.</li>
+        <li>Ana sürücüdeki (genellikle C:) dosya sistemine erişim hakları sorun yaratacağı için, proje klasör ve dosya listeleme işine kullanıcıya ait &quot;Belgeler&quot; (<em>Documents</em>) klasöründen başlamalıydı.<ul>
+            <li>Progranı çalıştıran kullanıcının &quot;Belgeler&quot; klasörüne erişmek için <strong>Environment.SpecialFolder.MyDocuments</strong> referansını kullandık. <strong>Environment.GetFolderPath</strong> ile bu özel klasörün dosya sistemindeki tam yolunu belirledik. <strong>new DirectoryInfo()</strong> ile yeni bir klasör nesnesi oluştururken bu adresi ilettik ki ana klasörü temsil eden bir nesne olsun elimizde.</li>
+            </ul>
+        </li>
+        <li><strong>KlasorListele</strong> fonksiyonu ile ana klasör altındaki alt klasörleri açılır liste kutusu <strong>cbKlasorler</strong>&#39;de listelettik. Bu fonksiyona argüman olarak ana klasörü temsil eden bir <strong>DirectoryInfo</strong> nesnesi gönderdik.<ul>
+            <li>Ana klasörü temsil eden <strong>DirectoryInfo</strong> nesnesinin <strong>GetDirectories</strong> fonksiyonu ile ana klasör içindeki alt klasörler dizisine oluşturduk. Bu dizideki alt klasörleri tek tek <strong>cbKlasorler</strong>&#39;e eleman olarak ekleyecek bir döngü oluşturabilirdik. Bunun yerine diziyi <strong>cbKlasorler</strong> kontrolünün veri kaynağı olarak tanımladık: <strong>cbKlasorler.DataSource = anaKlasor.GetDirectories();</strong></li>
+            </ul>
+        </li>
+        <li><strong>DosyaListele</strong> fonksiyonuna da argüman olarak ana klasörü temsil eden <strong>DirectoryInfo</strong> nesnesini gönderdik. Bu nesnenin <strong>GetFiles</strong> fonksiyonu ile ana klasör içindeki dosyaların dizisini oluşturduk ve bu diziyi <strong>lbDosyalar</strong> için veri kaynağı olarak kullandık: <strong>lbDosyalar.DataSource = anaKlasor.GetFiles();</strong></li>
+        <li><strong>cbKlasorler</strong>&#39;de seçili sıra numarası değiştiğini bildiren <strong>SelectedIndexChanged</strong> olayı bu kontrolde listelenen bir alt klasörün seçildiği anlamına gelir. Bu olayı yanıtlayan bir fonksiyonda seçili klasörü temsil eden <strong>DirectoryInfo</strong> referansını belirledik: <strong>DirectoryInfo seciliKlasor = cbKlasorler.SelectedItem as DirectoryInfo;</strong><ul>
+            <li>Bu referansı <strong>KlasorListele</strong> ve <strong>DosyaListele</strong> fonksiyonlarına ana klasör referansı olarak gönderdik. Böylece açılır liste kutusu <strong>cbKlasorler</strong> aracılığıyla alt klasörlere inebilen bir dosya tarayıcısı oluşturmuş olduk.</li>
+            </ul>
+        </li>
+        <li><strong>cbKlasorler</strong> için <strong>KeyDown</strong> olayını yanıtlayan fonksiyonda da olay ayrıntıları argümanı <strong>e</strong>&#39;deki <strong>KeyCode</strong> özelliğinden basılan tuş koduna baktırdık. Del tuşuna basılmışsa seçili klasörün silinmesi için gerekli işlemi yapacaktık ama bir yerlerde hata yaptık -ki hatalı kod yazmış olmamız en azından gerekli bir klasörü silmemizi engelledi.</li>
+    </ul>
+
+</body>
+</html>

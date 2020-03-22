@@ -34,7 +34,7 @@ namespace MyFileManager
 
         private void DosyaListele(DirectoryInfo anaKlasor)
         {
-            /*
+            /* Eğer dosyaları tek tek liste kutusuna eklemek isterseniz:
             FileInfo[] dosyalar = anaKlasor.GetFiles();
             for(int i=0; i < dosyalar.Length; i++)
             {
@@ -42,16 +42,6 @@ namespace MyFileManager
             }
             */
             lbDosyalar.DataSource = anaKlasor.GetFiles();
-        }
-
-        private void cbKlasorler_SelectedValueChanged(object sender, EventArgs e)
-        {
-            DirectoryInfo seciliKlasor = cbKlasorler.SelectedItem as DirectoryInfo;
-            if(seciliKlasor != null)
-            {
-                KlasorListele(seciliKlasor);
-                DosyaListele(seciliKlasor);
-            }
         }
 
         private void lbDosyalar_KeyDown(object sender, KeyEventArgs e)
@@ -62,6 +52,16 @@ namespace MyFileManager
                 FileInfo seciliDosya = lbDosyalar.SelectedItem as FileInfo;
                 File.Delete(seciliDosya.FullName);
                 lbDosyalar.Refresh();
+            }
+        }
+
+        private void cbKlasorler_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DirectoryInfo seciliKlasor = cbKlasorler.SelectedItem as DirectoryInfo;
+            if (seciliKlasor != null)
+            {
+                KlasorListele(seciliKlasor);
+                DosyaListele(seciliKlasor);
             }
         }
     }

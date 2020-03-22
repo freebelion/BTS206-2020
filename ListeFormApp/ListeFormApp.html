@@ -42,10 +42,14 @@
             <li><strong>SelectedIndex</strong> özelliğini tasarım görünümünde değiştiremezsiniz, ama kodlarla ona değer atayabilirsiniz. Atadığınız değer geçerli bir sıra numarası olmalıdır; negatif bir değer ya da eleman sayısını aşan bir değer atayamazsınız.</li>
             <li>Liste kutusu kontrolü için en önemli olay da seçili eleman (sıra numarasının) değiştiğini bildiren <strong>SelectedIndexChanged</strong> olayıdır. Seçili eleman değiştiğinde yapılacak işlemleri bu olayı yanıtlayan bir fonksiyonda yaptırabilirsiniz.</li>
             <li>Seçili eleman referansına da <strong>SelectedItem</strong> özelliğinden erişebilirsiniz. Çoklu seçime izin verilmişse de <strong>SelectedItems</strong> koleksiyon özelliğini kullanırsınız.</li>
-            <li>Kodlar aracılığıyla listeden eleman çıkartmak için <strong>Items</strong> koleksiyon özelliği üzerinde <strong>Remove</strong> fonksiyonunu çağırır ve listeden çıkartılacak elemanın referansını iletirsiniz. Örnek: <strong>lbListe.Items.Remove(lbListe.SelectedItem);</strong> komutu lbListe adlı liste kutusu kontrolündeki seçili elemanı ya da en üstteki seçili elemanı listeden çıkartacaktır.</li>
-            <li>Sıra numarasıyla eleman çıkartmak için de <strong>Items.RemoveAt</strong> fonksiyonuna çıkartılacak elemanın sıra numarasını iletmelisiniz.</li>
+            <li>Liste kutusu kontrolünün seçim şekline karar veren özelliği <strong>SelectionMode</strong>&#39;dur. Bu özelliğe atayabileceğiniz değerler <strong>SelectionMode</strong> adlandırılmış değerler grubu altındaki seçeneklerdir: <strong>SelectionMode.None</strong> hiç bir seçim yapılamayacağı anlamına gelir ve kutunun işlevini geçici olarak askıya almak için kullanılabilir. <strong>SelectionMode.One</strong> tekli seçime izin verir; yalnızca bir eleman seçtirir. <strong>SelectionMode.MultiSimple</strong> ile çoklu seçim yapılabilir; tıklanan eleman seçilir, seçiliyse seçimi iptal edilir. <strong>SelectionMode.MultiExtended</strong> seçeneği de çoklu seçime izin verir; bu mod ile klavyede Ctrl tuşuna basarken ayrık elemanlar, SHIFT tuşuna basarken de üst ve alt eleman arasındakiler seçilir.</li>
+            <li>Kodlar aracılığıyla listeden eleman çıkartmak için <strong>Items</strong> koleksiyon özelliği üzerinde <strong>Remove</strong> fonksiyonunu çağırır ve listeden çıkartılacak elemanın referansını iletirsiniz. Örnek: <strong>lbListe.Items.Remove(lbListe.SelectedItem);</strong> komutu <strong>lbListe</strong> adlı liste kutusu kontrolündeki seçili elemanı ya da en üstteki seçili elemanı listeden çıkartacaktır.</li>
+            <li>Çoklu seçime izin veren bir liste kutusunda tüm seçili elemanları sildirmek için şunun gibi bir döngü oluşturmalısınız:<strong> while (lbListe.SelectedItems.Count &gt; 0) { lbListe.Items.Remove(lbListe.SelectedItem); }</strong> Bu döngü seçili eleman sayısı sıfır olana kadar en üstteki seçili elemanı listeden çıkartır.</li>
             </ul>
         </li>
+        <ul>
+            <li>Sıra numarasıyla eleman çıkartmak için de <strong>Items.RemoveAt</strong> fonksiyonuna çıkartılacak elemanın sıra numarasını iletmelisiniz.</li>
+        </ul>
     </ul>
 
 </body>

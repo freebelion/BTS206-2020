@@ -41,7 +41,7 @@
             this.cbKlasorler.Name = "cbKlasorler";
             this.cbKlasorler.Size = new System.Drawing.Size(391, 32);
             this.cbKlasorler.TabIndex = 0;
-            this.cbKlasorler.SelectedValueChanged += new System.EventHandler(this.cbKlasorler_SelectedValueChanged);
+            this.cbKlasorler.SelectedIndexChanged += new System.EventHandler(this.cbKlasorler_SelectedIndexChanged);
             // 
             // lbDosyalar
             // 
