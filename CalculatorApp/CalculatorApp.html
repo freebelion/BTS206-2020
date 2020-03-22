@@ -16,8 +16,8 @@
 </head>
 <body style="font-family: Arial, Helvetica, sans-serif">
 
-    <p>
-        CalculatorApp Projesi Hakkında</p>
+    <h1>
+        CalculatorApp Projesi Hakkında</h1>
     <ul>
         <li>Bu projede yalnızca kodlar aracılığıyla bir hesap makinesi formu oluşturuyoruz.</li>
         <li>Hesap makinesi formu sonuçların görüntüleneceği bir metin kutusu ve rakam ve işlem düğmeleri içeriyor.</li>
@@ -30,7 +30,7 @@
             <li>C# programlama dilinde bir dizi değişkeni belirtilen türden nesnelerden oluşan bir dizinin referansını içerir. Yani kendisi aslında bir hafıza adresi taşıyan bir referans değişkenidir ki o da bir tamsayı değerle eşdeğerdir.</li>
             </ul>
         </li>
-        <li>Hem sonuç ektranını temsil eden metin kutusu kontrolü, hem de rakam ve işlem düğmelerini temsil eden düğme kontrollerini <span class="auto-style2">KontrolleriOlustur</span> adlı fonksiyonda, kodlarla oluşturuyoruz.</li>
+        <li>Hem sonuç ekranını temsil eden metin kutusu kontrolü, hem de rakam ve işlem düğmelerini temsil eden düğme kontrollerini <span class="auto-style2">KontrolleriOlustur</span> adlı fonksiyonda, kodlarla oluşturuyoruz.</li>
         <li>Görsel kontroller basit sayısal değerler olmayıp, kendilerine ait bilgileri saklayan üye değişkenleri ve davranışlarını belirleyen fonksiyon kodları olan nesnelerdir.<ul>
             <li>Dolayısıyla, bu nesneleri temsil eden değişkenler aslında nesnelerin hafıza adreslerini taşıyan referans değişkenleridir.</li>
             <li>Referans değişkenini tanımlamakla (örneğin: <span class="auto-style2">TextBox tbEkran;</span>) nesneyi oluşturmuş olmazsınız.</li>
@@ -51,7 +51,8 @@
             <li>Düğme kontrollerinin de etiketlerinde rakam veya işlem sembolleri gözüksün diye <span class="auto-style2">Text</span> özelliklerine atama yapıyoruz. Bir düğme kontrolü için <span class="auto-style2">Text</span> özelliği düğme üzerindeki etiket metnidir. Bu projede döngü içindeki sayaç değerini rakam karakterine dönüştürerek etiket belirliyoruz: <span class="auto-style2">dugmeler[i].Text = (i + 1).ToString();</span></li>
             </ul>
         </li>
-        <li>Form ve kontrol konumlarını da kodlarla belirliyoruz:<ul>
+        <li>Hesap makinesi öğelerini temsil eden kontrollerin konum ve boyutlarını <span class="auto-style2">KontrolleriYerlestir</span> adlı fonksiyonda, kodlarla belirliyoruz.&nbsp; Form boyutu değiştiğinde (ki o zaman form için <span class="auto-style2">Resize</span> olayı gerçekleşir ve <span class="auto-style2">CalculatorForm_Resize</span> fonksiyonu bu olayı yanıtlar) konum ve boyutların yeniden belirlenmesi için bu fonksiyonu çağırıyoruz.</li>
+        <li>Form ve kontrol konumlarını kodlarla belirlerken:<ul>
             <li>Kontrol konumlarını yatay koordinatı belirleyen <span class="auto-style2">Left</span> ve dikey koordinatı belirleyen <span class="auto-style2">Top</span> özellikleriyle ayarlanır.</li>
             <li><span class="auto-style2">Left</span> özelliği kontrol sol kenarının form iç bölgesininin sol kenarından uzaklığını belirler: <span class="auto-style2">tbEkran.Left = BOS;</span> (<span class="auto-style2">BOS</span> sabit bir tamsayı değerdir; proje formunda kontroller arasında kalacak boşluğun bir ölçüsüdür)</li>
             <li><span class="auto-style2">Top</span> özelliği kontrol üst kenarının form iç bölgesinin üst kenarından uzaklığını belirler: <span class="auto-style2">tbEkran.Top = BOS;</span></li>
@@ -59,14 +60,23 @@
             <li>Yine bu projede denemediğimiz bir başka bilgi: Bir form için <span class="auto-style2">Left</span> ve <span class="auto-style2">Top</span> (ve sol üst köşe koordinatlarını belirleyen <span class="auto-style2">Location</span>) özellikleri pencerenin ekran üzerindeki konumunu belirleyecektir.</li>
             </ul>
         </li>
-        <li>Form ve kontrol boyutlarını da kodlarla belirliyoruz:<ul>
+        <li>Form ve kontrol boyutlarını kodlarla belirlerken:<ul>
             <li><span class="auto-style2">Width</span> özelliğiyle genişlik belirliyoruz: <span class="auto-style2">dugmeler[k].Width = duggen;</span> (<span class="auto-style2">duggen</span> değeri form boyutuna göre belirlenmiş düğme genişliği değeridir).</li>
             <li><span class="auto-style2">Height</span> özelliğiyle yükseklik belirliyoruz: <span class="auto-style2">dugmeler[k].Height = dugyuk;</span> (<span class="auto-style2">dugyuk</span> değeri form boyutuna göre belirlenmiş düğme yüksekliği değeridir).</li>
             <li>Kontrolün her iki boyutunu tek bir komutla belirlemek için de <span class="auto-style2">Size</span> özelliğini kullanabilirsiniz. Bu özelliğe değer atamak için yatay ve dikey boyutlarla yeni bir <span class="auto-style2">Size</span> nesnesi oluşturmalısınız: <span class="auto-style2">dugmeler[k].Size = new Size(duggen, dugyuk);</span></li>
             <li>Bir form penceresinin boyutlarını da <span class="auto-style2">Width</span>, <span class="auto-style2">Height</span> veya <span class="auto-style2">Size</span> özellikleriyle beklirleyebilirsiniz. Bu şekilde formun dış çerçeve boyutlarını belirlemiş olursunuz. Kontrolleri bardındıran iç dörtgenin boyutlarına da form nesnesine ait <span class="auto-style2">ClientRectangle</span> özelliğinden, bunun altındaki <span class="auto-style2">Width</span>, <span class="auto-style2">Height</span> ve <span class="auto-style2">Size</span> özelliklerinden erişebilirsiniz.</li>
+            <li>Bu projede form belli bir boyutun altında küçültülmesin diye MinimumSize özelliğine değer atamak için bir <span class="auto-style2">Size</span> nesnesi oluşturduk: <span class="auto-style2">this.MinimumSize = new Size(200, 300);</span></li>
             </ul>
         </li>
-        <li>Bu projede form ve kontrollerin etkileşim olaylarını yanıtlayacak fonksiyonları da kodlarla belirledik.</li>
+        <li>Bu projede form ve kontrollerin etkileşim olaylarını yanıtlayacak fonksiyonları da kodlarla belirledik.<ul>
+            <li>Bir form veya kontrol için olay fonksiyonu tanımlarken nesnenin referans değişkeni, üyelik işlemcisi <strong>.</strong> ve ardından olay adını yazarsınız. Bunu izleyen <strong>+=</strong> ile bu olayı yanıtlayacak bir fonksiyon &quot;eklersiniz.&quot; Dikkat edin, <strong>=</strong> ile olayı yanıtlayacak tek bir fonksiyon tanımlamazsınız; bir çok olayı geri planda yanıtlayacak olay fonksiyonları olabilir, siz yalşnızca kendi tanımladığınız bir fonksiyonu eklersiniz.</li>
+            <li>Olay yanıtlayan fonksiyonun yalnızca adını vermek yeterlidir, ama fonksiyonun belli bir &quot;imzası&quot; olmalıdır, yani belli türden argümanlar alıyor olmalıdır. İlk argüman genellikle <span class="auto-style2">sender</span>, yani olayın kaynağı olan nesnenin referansıdır. İkincisi de olayla ilgili ayrıntıları içeren <span class="auto-style2">EventArgs</span> türü bir nesne referansı olabilir, ama olayın cinsine göre bu <span class="auto-style2">MouseEventArgs</span> gibi özelleşmiş olay argümanları grubu olabilir.</li>
+            <li>Form üzerine görsel kontroller yerleştirilecekse, form konumlandırılmış, boyutlandırılmış ve ekrana gelmeye hazır olmalıdır. Form kurucu fonksiyonunda bu durumu bildiren Load olayını yanıtlayacak fonksiyon belirledik: <span class="auto-style2">this.Load += CalculatorForm_Load;</span></li>
+            <li>Form boyutlarının (elle ya da kodlar aracılığıyla) değiştiğini bildiren <span class="auto-style2">Resize</span> olayını yanıtlayan fonksiyonu da kurucu fonksiyonda ekledik: <span class="auto-style2">this.Resize += CalculatorForm_Resize;</span></li>
+            <li>Birden fazla kontrol için aynı olay fonksiyonunu kullanmak mümkündür. Biz bu projede hesap makinesi düğmelerini temsil eden <span class="auto-style2">Button</span> türü kontrollerin tıklanma (Click) olaylarını aynı fonksiyonla yanıtlanmasını sağladık: <span class="auto-style2">dugmeler[i].Click += Dugme_Click;</span> Bu fonksiyon yalnızca düğme üzerindeki etiketin (rakam ya da işlem sembolü) ekranı temsil eden metin kutusuna eklenmesini sağlıyordu: <span class="auto-style2">tbEkran.Text += dugme.Text;</span></li>
+            <li>Bir olay fonksiyonun ilk argümanı olan <span class="auto-style2">sender</span> olayın kaynağı olan kontrolün referansını taşır. <span class="auto-style2">Dugme_Click</span> fonksiyonundaki gibi birden fazla kontrol aynı fonksiyona olay göndermişse, hangi nesnenin asıl kaynak olduğunu belirlemek için sender argümanını doğru türe dönüştürmek gerekir. Biz bu olay fonksiyonunda kaynağın hangi düğme olduğunu belirlemek için <span class="auto-style2">Button dugme = sender as Button;</span> şeklinde bir referans dönüştürme yaptık. Kodlama hatası sonucu düğmeler dışındaki bir kontrolün olayı aynı fonksiyona yönlendirilmiş olsaydı, bu dönüştürme başarılı olmaz ve sonuç olarak dugme değişkenindeki referans boş (<span class="auto-style2">null</span>) kalırdı. Bundan endişelendiğimiz için de (gülmeyin, kendi yaptığınız hatalar sizin en büyük baş belanız olacaktır) dönüştürmenin başarılı olup olmadığını kontrol ettik: <span class="auto-style2">if(dugme != null)</span></li>
+            </ul>
+        </li>
     </ul>
 
 </body>

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            font-family: "Courier New", Courier, monospace;
+            font-weight: bold;
+        }
+        .auto-style2 {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif">
+
+    <h1>ListeFormApp Hakkında</h1>
+    <ul>
+        <li>Bu projeyle açık liste kutusu (<span class="auto-style1">ListBox</span>) kontrolünü tanıtmaya yönelik basit bir uygulama geliştiriyoruz.</li>
+        <li>Uygulama formunun tasarım görünümünde (<em>Design View</em>) üzerinde değişken adı <span class="auto-style1">lbListe</span> olan bir liste kutusu kontrolü konmuştur.</li>
+        <li>Bu projede form ve kontrol özelliklerini tasarım görünümündeyken, özellikler tablosu (<em>Properties</em>) aracılığıyla değiştirdik.<ul>
+            <li>Örneğin, <span class="auto-style1">lbListe</span> için <span class="auto-style1">Dock</span> özelliğini <span class="auto-style1">Fill</span> diye seçtik ki liste kutusu tüm formu doldursun.</li>
+            <li><span class="auto-style1">Dock</span> özelliği bir kontrolün form üzerinde hangi kenara &quot;tutturulacağını&quot; belirler. Alabileceği değerler DockStyle adlandırılmış değerler grubu altındaki seçeneklerdir: <span class="auto-style1">DockStyle.None</span> (kontrol belirlediğiniz yerde kalır ve herhangi bir kenara tutturulmaz), <span class="auto-style1">DockStyle.Left</span> (kontrol formun sol kenarına tutturulmuş olarak kalır), <span class="auto-style1">DockStyle.Right</span> (kontrol formun sağ kenarına tutturulmuş olarak kalır), <span class="auto-style1">DockStyle.Top</span> (kontrol üst kenara tutturulur), <span class="auto-style1">DockStyle.Bottom</span> (kontrol alt kenara tutturulur) ve bu projede kullandığımız <span class="auto-style1">DockStyle.Fill</span> (kontrol boş kalan tüm bölgeyi doldurur).</li>
+            <li><span class="auto-style1">Dock</span> özelliğine atadığınız değere göre, bir kontrol hep tutturulduğu kenara yapışık kalır ve yatay veya dikey boyutu formunkiyle birlikte değiştir.</li>
+            <li>Form üzerinde birden fazla kontrol olduğu zaman, kontrollerin <span class="auto-style1">Dock</span> özellikleri kodlarda gözüktükleri sırayla, veya kontrollerin form üzerine eklendikleri sırayla uygulanırlar.</li>
+            </ul>
+        </li>
+        <li>Bir açık liste kutusu barındırdığı seçenekleri hep görünür tutar ve dikey boyutu seçeneklerin gerektirdiği satırların toplam yüksekliği kadardır.<ul>
+            <li>Seçenekleri hep görünür olarak listelediği için, aralarında sıkça seçim yapılabilecek seçenekleri listelemek için uygundur.</li>
+            <li>Seçenekler liste kutusunun görünür kısmına sığmamışsa, altta kalanları görebilmeniz için kutu kenarında kaydırma çubuğu (<span class="auto-style1">ScrollBar</span>) gözükecektir.</li>
+            </ul>
+        </li>
+        <li>Liste kutusunun asıl listesi, yani elemanlar koleksiyonuna <strong>Items</strong> özelliğinden erişirsiniz.<ul>
+            <li>Bu özelliğe özellikler (<em>Properties</em>) tablosundan erişmişseniz, <span class="auto-style2">Items</span> özelliğinin yanındaki üç noktalı ... düğmesini tıklayarak elemanları elle ekleyebileceğiniz bir küçük form açarsınız.</li>
+            <li>Liste kutusuna kodlarla eleman eklemek için de <strong>Items</strong> koleksiyonunun <span class="auto-style2">Add</span> fonksiyonunu kullanırsınız: <span class="auto-style2">lbListe.Items.Add(5);</span> gibi.</li>
+            <li>Liste kutusuna eleman olarak metin, sayısal değer, ya da nesne referansları ekleyebilirsiniz, ama kontrol bunları birer karakter dizgisi gibi gösterecektir.</li>
+            <li>Sayısal değer gibi sıradan türler için metne dönüştürmeyi sistem yapar, ama nesne türü elemanların hangi özelliklerinin eleman metni olarak gözükeceğini sizin belirlemeniz gerekecektir.</li>
+            <li>Liste kutusu için önemli özellik seçili eleman sıra numarasını veren <b>SelectedIndex</b> özelliğidir. Çoklu seçime izin veren liste kutularında ise seçili elemanların sıra numaralarına <b>SelectedIndices</b> koleksiyonundan erişirsiniz. Çoklu seçim mümkünse, <strong>SelectedIndex</strong> en üstteki (sıra numarası en küçük olan) seçili elemanın sıra numarasını verir.</li>
+            <li>Liste kutusu kontrolünün baişlangıç durumunda, seçili bir eleman yokken, <strong>SelectedIndex</strong> değeri -1 olacaktır. Seçili eleman üzerinde işlem yapacağınız herhangi bir durumunda mutlaka <strong>SelectedIndex</strong> değerini -1 ile katşılaştırmalısınız.</li>
+            <li><strong>SelectedIndex</strong> özelliğini tasarım görünümünde değiştiremezsiniz, ama kodlarla ona değer atayabilirsiniz. Atadığınız değer geçerli bir sıra numarası olmalıdır; negatif bir değer ya da eleman sayısını aşan bir değer atayamazsınız.</li>
+            <li>Liste kutusu kontrolü için en önemli olay da seçili eleman (sıra numarasının) değiştiğini bildiren <strong>SelectedIndexChanged</strong> olayıdır. Seçili eleman değiştiğinde yapılacak işlemleri bu olayı yanıtlayan bir fonksiyonda yaptırabilirsiniz.</li>
+            <li>Seçili eleman referansına da <strong>SelectedItem</strong> özelliğinden erişebilirsiniz. Çoklu seçime izin verilmişse de <strong>SelectedItems</strong> koleksiyon özelliğini kullanırsınız.</li>
+            <li>Kodlar aracılığıyla listeden eleman çıkartmak için <strong>Items</strong> koleksiyon özelliği üzerinde <strong>Remove</strong> fonksiyonunu çağırır ve listeden çıkartılacak elemanın referansını iletirsiniz. Örnek: <strong>lbListe.Items.Remove(lbListe.SelectedItem);</strong> komutu lbListe adlı liste kutusu kontrolündeki seçili elemanı ya da en üstteki seçili elemanı listeden çıkartacaktır.</li>
+            <li>Sıra numarasıyla eleman çıkartmak için de <strong>Items.RemoveAt</strong> fonksiyonuna çıkartılacak elemanın sıra numarasını iletmelisiniz.</li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>

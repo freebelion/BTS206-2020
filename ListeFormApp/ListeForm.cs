@@ -15,6 +15,7 @@ namespace ListeFormApp
         public ListeForm()
         {
             InitializeComponent();
+            lbListe.Dock = DockStyle.
         }
 
         private void lbListe_SelectedIndexChanged(object sender, EventArgs e)
