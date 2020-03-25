@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif">
+
+    <h1>DrawingApp Projesi Hakkında</h1>
+    <ul>
+        <li>Bu projede <strong>UstPanel</strong>&#39;inde çizim tercihlerini belirleyen kontroller olan, <strong>CizimPaneli</strong> üzerinde de çizim yapılabilen bir form tasarladık.</li>
+        <li>Çizimler fare imleciyle tıklanan noktaların çizgilerle birleştirilmesi yoluyla gerçekleştirildi.</li>
+        <li>Fare tıklama olaylarını kısaca tanıtırsak,<ul>
+            <li><strong>MouseDown</strong> olayı fare düğmesinin &quot;basıldığını&quot; bildirir.</li>
+            <li><strong>MouseUp</strong> olayı fare düğmesinin &quot;kaldırıldığını&quot; bildirir.</li>
+            <li>Yukarıdaki iki olayı yanıtlayacak fonksiyonun beklediği ikinci argüman fare olayının ayrıntıları ileten <strong>MouseEventArgs</strong> türü bir nesnedir. Bu argümanın <strong>Location</strong> özelliği olay konumunu (Point türü bir nokta olatak) belirler.</li>
+            <li>İstenirse <strong>X</strong> ve <strong>Y</strong> özelliklerinden olayın gerçekleştiği koordinatlara erişebilirsiniz.</li>
+            </ul>
+        </li>
+        <li>Çizim için iki seçenek vardı: Tıklanan noktaları düz çizgiyle birleştiren &quot;Kırık Çizgi&quot; modu ve fare düğmesi basılıyken fare imlecinin hareketini çizgilerle gösteren &quot;Sürekli Çizim&quot; modu.<ul>
+            <li>Bu iki seçenekten yalnızca biri geçerli olabilirdi. Bu nedenle iki seçeneği yalnızca biri işaretlenebilen radyo düğmelerine (<strong>RadioButton</strong> kontrolleri) bağladık.</li>
+            <li>Bir <strong>RadioButton</strong> kontrolünün işaretli olup olmadığını&nbsp; <strong>Checked</strong> özelliği gösterir. Bu özellik değeri <strong>true</strong> ise düğme işaretli demektir ve aynı panel veya grup üzerindeki diğer radyo düğmeleri işaretli değil, iptal edilmiş demektir.</li>
+            <li>İşaret değişikliğini ise <strong>CheckedChanged</strong> olayıyla haber alırsınız.</li>
+            </ul>
+        </li>
+        <li>Çizim modunu form sınıfına ait mantıksal belirteç (<em>boolean flag</em>) türü değişkenleriyle izledik. Bunlar da tıpkı <strong>Checked</strong> özelliği gibi <strong>true</strong> ya da <strong>false</strong> değeri alan <strong>bool</strong> türü değişkenlerdir.<ul>
+            <li><strong>bSurekliCizim</strong> tercihi etkinse, fare basılması olayında <strong>bCiziyor</strong> belirtecini etkinleştirdik.</li>
+            <li><strong>bSurekliCizim</strong>&nbsp; etkinken <strong>bCiziyor</strong> belirteci fare düğmesi kaldırılana kadar etkin kaldı.</li>
+            <li><strong>bCiziyor</strong> etkinken, <strong>MouseMove</strong> olayıyla fare imleci konumunu izledik ve değişen konumları <strong>noktalar</strong> adlı bir listeye ekledik.</li>
+            <li><strong>bSurekliCizim</strong> etkin değilken de <strong>MouseDown</strong> olayının gerçekleştiği konumları <strong>noktalar</strong> listesine ekledik.</li>
+            </ul>
+        </li>
+        <li>Bir form veya bir kontrol üzerinde çizim yapmak için ona ait yüzeyin bir referansını almanız gerekir.<ul>
+            <li>Bu proje formunda <strong>CizimPaneli</strong>&#39;nin yüzey referansını <strong>CreateGraphics</strong> fonksiyonuyla aldık.</li>
+            <li>Çizim yüzeyini temsil eden referans <strong>Graphics</strong> türü bir nesnedir.</li>
+            <li><strong>Graphics</strong> türü bir nesneye ait <strong>DrawLine</strong> fonksiyonuyla argüman olarak ilettiğimiz konumlar (noktalar listesinin son iki elemanı) arasında çizgi çizdirdik.</li>
+            <li>Çizim yapan başka fonkiyonlar: dörtgen çizen <strong>DrawRectangle</strong>, elips çizen <strong>DrawEllipse</strong>, vb.</li>
+            <li>Çizim fonksiyonları kenar çizgileri için bir kalem (<strong>Pen</strong>) referansı ister. İsteğe özel bir kalem tanımlamayacaksanız, <strong>Pens</strong> adlı adlandırılmış değerler grubuna (<strong>enum</strong>) ait düz renk kalemleri hazır kullanabilirsiniz: <strong>Pens.Black</strong>, <strong>Pens.Red</strong>, vb.</li>
+            </ul>
+        </li>
+        <ul>
+            <li>İçi renklendirilmiş şekil oluşturmak için de yine <strong>Graphics</strong> nesnesine ait <strong>FillRectangle</strong>, <strong>FillEllipse</strong>, vb. çizim fonksiyonlarını kullanırsınız.</li>
+        </ul>
+        <li>Çizim işlemlerinde kulalndığımız kalem tanımının renk ve kalınlığını <strong>UstPanel</strong>&#39;e eklediğimiz bazı kontrollerle belirlenmesini sağladık, ama projenin bu kısmı oldukça kaba-saba ve kullanışsızdı. Sizler gerekli düzeltmeleri yapıp bu formu bir şeye benzetebilirsiniz.<ul>
+            <li>Örneğin, kalem kalınlığını belirleyecek bir sayısal seçim (<strong>NumericUpDown</strong>) kontrolü koyabilirsiniz.</li>
+            </ul>
+        </li>
+        <li>Çizim işlemlerinde önemli olan şey, form penceresi küçültüğünde veya gizlenip tekrar ekrana getirildiğinde vb. çizimlerin kaybolmasına karşı önlem almaktır.<ul>
+            <li>Biz önlem için, çizim yüzeyinin yeniden ekrana geldiğini bildiren <strong>Paint</strong> olayını yanıtladık. Olay fonksiyonu argümanı e nesnesinden aldığımız <strong>Graphics</strong> özelliğiyle, noktalar listesindeki konumları tekrar çizgilerle birleştirdik.</li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>

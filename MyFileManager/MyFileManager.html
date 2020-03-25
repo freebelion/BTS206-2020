@@ -11,7 +11,15 @@
     <ul>
         <li>Bu projede bir açılır liste kutusu (<strong>ComboBox</strong>) kontrolü ile bir açık lste kutusu (<strong>ListBox</strong>) kontrolünü birlikte kullanıyoruz.</li>
         <li>Dock özelliklerini kullanarak, açılır liste kutusunu form penceresinin üst kenarına tutturduk (<strong>DockStyle.Top</strong>), liste kutusunun da formun geri kalanını doldurmasını (<strong>DockStyle.Fill</strong>) sağladık.</li>
-        <li>Açılır liste kutusu kontrolü <strong>cbKlasorler</strong> dosya sistemindeki klasörleri, açık liste kutusu <strong>lbDosyalar</strong> ise seçilen klasör içindeki dosyaları listelemek içindi.</li>
+        <li>Açılır liste kutusu kontrolü <strong>cbKlasorler</strong> dosya sistemindeki klasörleri, açık liste kutusu <strong>lbDosyalar</strong> ise seçilen klasör içindeki dosyaları listelemek içindi.<ul>
+            <li>Açılır liste kutusu (<strong>ComboBox</strong>) kontrolü bir çok açıdan açık liste kutusu gibidir. Tek farkı yalnızca o an seçili olan elemanı göstermesidir. Sık seçim yapılmayacak seçenekler için uygundur.</li>
+            <li>Elemanlar koleksiyonuna <strong>Items</strong> özelliğinden erişirsiniz.</li>
+            <li>Seçili eleman sıra nosu <strong>SelectedIndex</strong> özelliğiyle verilir.</li>
+            <li>Seçili elemanın değiştiğini bildiren olay <strong>SelectedIndexChanged</strong> olayıdır.</li>
+            <li>Seçili elemanın referansına <strong>SelectedItem</strong> özelliğinden erişirsiniz.</li>
+            <li>Bu kontrol yalnızca tek bir seçili eleman gösterir; dolayısıyla çoklu seçime izin vermez. Böylelikle, <strong>SelectionMode</strong>, veya <strong>SelectedItems</strong> gibi özellikleri yoktur.</li>
+            </ul>
+        </li>
         <li>Dosya sistemindeki klasör ve dosyalarla ilgili bilgilere erişim sağlayacak sınıf tanımlarını kullanmak için form kod dosyasına <strong>using System.IO;</strong> kütüphane referansını ekledik.<ul>
             <li><strong>using</strong> ile eklenen bir referans sayesinde eklenen kütüphanedeki sınıf tanımları (yani nesne türleri) ayrıca kütüphanenin adını belirtmeden kullanılabilir. Yani <strong>using</strong> referansı olmayınca oradakli tanımlar kullanılamaz diye bir şey yoktur.</li>
             <li>Aslında <strong>using</strong> ile bir ad uzayına (<strong>namespace</strong>) referans yapılır, ama şimdilik bu ayrıma kafa yormayacağız.</li>
@@ -31,7 +39,12 @@
             <li>Bu referansı <strong>KlasorListele</strong> ve <strong>DosyaListele</strong> fonksiyonlarına ana klasör referansı olarak gönderdik. Böylece açılır liste kutusu <strong>cbKlasorler</strong> aracılığıyla alt klasörlere inebilen bir dosya tarayıcısı oluşturmuş olduk.</li>
             </ul>
         </li>
-        <li><strong>cbKlasorler</strong> için <strong>KeyDown</strong> olayını yanıtlayan fonksiyonda da olay ayrıntıları argümanı <strong>e</strong>&#39;deki <strong>KeyCode</strong> özelliğinden basılan tuş koduna baktırdık. Del tuşuna basılmışsa seçili klasörün silinmesi için gerekli işlemi yapacaktık ama bir yerlerde hata yaptık -ki hatalı kod yazmış olmamız en azından gerekli bir klasörü silmemizi engelledi.</li>
+        <li><strong>cbKlasorler</strong> için <strong>KeyDown</strong> olayını yanıtlayan fonksiyonda da olay ayrıntıları argümanı <strong>e</strong>&#39;deki <strong>KeyCode</strong> özelliğinden basılan tuş koduna baktırdık. Del tuşuna basılmışsa seçili klasörün silinmesi için gerekli işlemi yapacaktık ama bir yerlerde hata yaptık -ki hatalı kod yazmış olmamız en azından gerekli bir klasörü silmemizi engelledi.<ul>
+            <li>Bu silme işlemindekisorun şuydu: Bir liste kutusunun veri kaynağı <strong>DataSource</strong> özelliğiyle belirlenmişse, elemanlar tek tek değil de dışarıdaki bir dizi veya listeden aktarılmış olur -ki biz de öyle yaptık. O zaman liste kutusundan eleman silinemez; elemanın kaynak dizi veya listeden çıkartılması ve liste kutusunun (<strong>Refresh</strong> fonksiyonu çağrılarak) yenilenmesi gerekir.</li>
+            <li>Silinecek klasör belirlenince dosya sistemi üzerinde genel amaçlı işlemler yapabilen <strong>Directory</strong> sınıfı aracılığıyla bu klasörü silmeniz, sonra aynı ana klasör referansı ile KlasorListele fonksiyonu bir daha çağırmanız gerekirdi.</li>
+            </ul>
+        </li>
+        <li>Bu projede hala eksik kalan bir özellik bir alt klasöre indikten sonra bir üst klasöre geri çıkabilmektir. Bunu da sizler yapabilirsiniz.</li>
     </ul>
 
 </body>

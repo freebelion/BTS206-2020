@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif">
+
+    <h1>OyunProje Projesi Hakkında</h1>
+    <ul>
+        <li>Bu projede genellikle oyun programlarında kullanılabilecek zamanlayıcı (<strong>Timer</strong>) kontrolünü kullandık.<ul>
+            <li><strong>Timer</strong> kontrolü görsel bir kontrol değil, bir uygulama öğesidir (<em>component</em>). Program araçları (<em>Toolbox</em>) penceresindeki ek öğeler (<em>Components</em>) bölümünde bulursunuz.</li>
+            <li><strong>Timer</strong> kontrolü belli aralıkla <strong>Tick</strong> (Tik) olayı yayımlar. Bu olayı yanıtlayan bir fonksiyonla eşit aralıklarla tekrarlanması gereken işlemleri yaptırırsınız.</li>
+            <li>Zamanlayıcının tik olayı aralığını belirleyen özelliği<strong> Interval</strong>&#39;dır. Bu özelliğin tamsayı değeri tıklama aralığını milisaniye cinsinden verir.</li>
+            <li>Bir zamanlayıcı nesnesini oluşturmakla zamanlayıcı çalışmış olmaz; <strong>Start</strong> fonksiyonunu çağırarak başlatır, <strong>Stop</strong> fonksiyonu çağırarak durdurursunuz.</li>
+            </ul>
+        </li>
+        <li>Bu proje uygulaması zamanlayıcının tiklediği aralıklarla belli sayıda hedef gösterdi ve kullanıcı o hedefleri vuracak mı diye bekledi.</li>
+        <li>Bu projenin diğer önemli özelliği de kullanıcının tercihlerini belirleyebilecek ayarları (<strong>Settings</strong>) olmasıdır.<ul>
+            <li>Proje ayarlarına <strong>Properties</strong> adlı sanal proje klasörğü altındaki <strong>Settings.settings</strong> öğesinden erişirsiniz.</li>
+            <li><strong>Settings</strong> bir kod dosyası değil, bir özellikler tablosudur.</li>
+            <li>Bu projedeki <strong>Sure</strong> adlı ayarla hedeflerin gözükme süresi ayarlandı (bu değeri zamanlayıcının <strong>Interval</strong> özelliğine atadık).</li>
+            <li><strong>HedefBoyutu</strong> ayarı hedef dairelerin çapını belirlemek içindi.</li>
+            <li><strong>HedefSayisi</strong> birlikte gözüken hedef sayısını belirlemek içindi.</li>
+            <li><strong>HedefRenk</strong> ise hedef dairelerin iç boyama rengini seçmek içindi.</li>
+            <li>Bu ayar tanımlarını yaptıysak da, oyun kullanıcısının bu ayarları kendi belirleyebilmesi için kontroller eklemedik. Bu eksikliği sizler tamamlayabilirsiniz.</li>
+            <li>Ayar değerleri değiştirilmişse Settings nesnesine ait <strong>Save</strong> fonksiyonuyla yeni ayar değerleri kaydedilir.</li>
+            <li><strong>Reload</strong> fonksiyonuyla da program açıldığında son değerler okunabilir.</li>
+            </ul>
+        </li>
+        <li>Oyunu başlatmak (<strong>Timer</strong> için <strong>Start</strong>) ve durdurmak (<strong>Timer</strong> için <strong>Stop</strong>) için bir kontrol şeritine (<strong>ToolStrip</strong>) düğmeler ekledik.<ul>
+            <li>Bu düğmeler için tasarladığımız uydurma resimleri lütfen siz düzeltin.</li>
+            </ul>
+        </li>
+        <li>Süre bittiğinde form üzerindeki hedeflerin kaybolması için oyun paneli yüzeyini <strong>Invalidate</strong> fonksiyonunu çağırarak sıfırladık.</li>
+        <li>Yüzeyin yeniden oluşması gerekltiğini bildiren <strong>Paint</strong> olayı fonksiyonunda da rasgele yerlerde yeni hedefler oluşturduk.</li>
+    </ul>
+
+</body>
+</html>
