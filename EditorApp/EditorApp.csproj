@@ -86,5 +86,8 @@
   <ItemGroup>
     <None Include="Resources\imgYatik.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="EditorApp.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

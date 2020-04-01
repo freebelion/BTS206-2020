@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif">
+
+    <h1>EditorApp Hakkında</h1>
+    <ul>
+        <li>Bu uygulamanın formu üzerinde bir kaç yeni öğe tanıtıyoruz:<ul>
+            <li>Program menüsü</li>
+            <li>Kontrol şeriti</li>
+            <li>Zengin metin (<strong>RichTextBox</strong>) kontrolü</li>
+            <li>Dosya açma ve kaydetme diyalogları</li>
+            </ul>
+        </li>
+        <li>Bir uygulama formuna menü eklemek için form tasarım araç kutusunda (<em>Toolbox</em>) &quot;Menus &amp; Toolbars&quot; kategorisinden bir <strong>MenuStrip</strong> (menü şeriti) çekip form üzerine bırakırsınız.<ul>
+            <li>Bir menü şeriti tıklanınca bir eylem başlatan yazılı seçenekler içerir.</li>
+            <li>Menü şeriti tasarım görünümündeyken boş kısmında &quot;Type here&quot; yazılı bir kutu gözükecektir. Bu kutucuğu tıklayarak menü şeritine yazılı bir seçenek ekleyebilirsiniz.</li>
+            <li>Şimdiki sürümlerde menü şeritine metin kutusu, açılır liste kutusu vb. kontroller de ekleyebilirsiniz.</li>
+            <li>Menü şeritine eklediğiniz bir seçenek tıklanıca kendi alt menüsünü gösteren bir başlık olabilir. Tasarım görünümünde ana seçenek altındaki &quot;Type Here&quot; kutucuğunu tıklayarak alt menü seçenekleri ekleyebilirsiniz.</li>
+            <li>Menü başlıkları, alt veya üst seçenekler, tıklandıklarında <strong>Click</strong> olayı yayımlanır. Bu olayı yanıtlayan bir fonksiyonla menü seçeneğinin başlatacağı eylemleri gerçekleştiren kodları ekleyebilirsiniz.</li>
+            <li>Form tasarım görünümünde menü seçeneği metnini yazarken bir harf önünde &amp; sembolü koyarsanız, form ekrana gelşdiğinde menü seçeneğinin o harfi alt çizgili gözükür ve kısayol tuşu olarak iş görür. Böylece &quot;&amp;Dosya&quot; menü başlığını ALT tuşu basılıyken D harfine basarak açabiilirsiniz.</li>
+            </ul>
+        </li>
+        <li>Forma bir kontrol şeriti eklemek için de &quot;Menus &amp; Toolbars&quot; kategorisinden bir <strong>ToolStrip</strong> (&quot;araç şeriti&quot; ya da &quot;kontrol şeriti&quot;) çekip form üzerine bırakırsınız.<ul>
+            <li>Kontrol şeriti üzerinde genellikle tıklanınca bir eylem başlatan düğmeler koyarsınız, ama metin kutuları, açılır liste kutuları vb. eklemek de mümkündür.</li>
+            <li>Kontrol şeriti düğmelerinde <strong>DisplayStyle</strong> (görünüm stili) diye bir özellik vardır. Bu özellik için geçerli seçenekler: &quot;None&quot; (düğme gösterilmez), &quot;Text&quot; (düğme üzerinde yalnızca metin etiketi olur), &quot;Image&quot; (düğme üzerinde yalnızca bir resim vardır), &quot;Image and Text&quot; düğmenin hem resmi hem de etiket metni gözükür).</li>
+            <li>Bir kontrol düğmesinin görünüm stili normalde &quot;Image&quot; olacaktır. Düğme üzerinde yalnızca düğmenin yaptıracağı işlemi hatırlatacak basit bir resim gözükür. Düğmeyi harici bir resim dosyasından içeri aktardığınız veya program kaynaklarında (Resources) oluşturduğunuz bir resim yükleyebilirsiniz.</li>
+            <li>Bir kontrol düğmesi tıklandığında <strong>Click</strong> olayı yayımlanır. Bu olayı yanıtlayan bir fonksiyona düğmenin başlatacağı işlemleri gerçekleştiren kodları ekleyebilirsiniz.</li>
+            <li>Bir kontrol düğmesinin <strong>ImageTransparentColor</strong> özelliğiyle düğme resminde saydam gözükecek rengi belirleyebilirsiniz. Bu renk normalde &quot;magenta&quot;dır, yani hiç yeşil katkısı olmayıp tam parlak kırmızı ve mavi karışımı. Düğme resminde bu rengi taşıyan pikseller görünmez ve altlarındaki kontrol şeriti yüzeyi gözükür.</li>
+            <li>Kontrol düğmesi için <strong>ToolTipText</strong> özelliğiyle belirleyeceğiniz açıklama metni fare imleci düğme üzerinde bekleyince gözükür. Bu metin normalde düğme için belirlediğiniz <strong>Text</strong> yani etiket metni ile aynıdır ama <strong>ToolTipText</strong> ile az daha uzun açıklama ekleyebilirsiniz.</li>
+            </ul>
+        </li>
+        <li>Bu uygulama formunda biçimlendirilebilen metin yazmaya izin veren zengin metin kutusu (<strong>RichTextBox</strong>) kontrolü de kullandık.<ul>
+            <li>Bir zengin metin kutusunda yazı tipi <strong>Font</strong> özelliğinden belirlenebilir, seçili metin yazı tipi de <strong>SelectionFont</strong> özelliğinden belrlenebilir.</li>
+            <li>Yazı tipi belirlerken <strong>Font</strong> türü bir nesne oluşturmalısınız.</li>
+            <li>Bir <strong>Font</strong> nesnesinin <strong>Name</strong> özelliğiyle yazı tipi adı, <strong>Size</strong> özelliğiyle (punto cinsinden) yazı boyutu, <strong>Bold</strong> özelliğiyle kalın olup olmadığı (true ya da false), <strong>Italic</strong> özelliğiyle yatık olup olmadığı (true ya da false), <strong>Underline</strong> özelliğiyle alt çizgi tipi belirlenebilir. <strong>Style</strong> özelliği de tüm bu biçimlendirme özelliklerini tek bir stil tanımıyla belirlemek içindir.</li>
+            <li>Zengin metin kutusunda karakterleri biçimlendirmek için <strong>Font</strong> veya <strong>SelectionFont</strong> üzerinden yukarıdaki özellikleri değiştiremezsiniz. Bunun yerine, istediğiniz biçimlendirme özelliklerine sahip yeni bir <strong>Font</strong> nesnesi oluşturmalı ve onu kullanmalısınız. Örnek: <strong>editor.SelectionFont = new Font(seciliYaziTipi, FontStyle.Italic);</strong> komutuyla varolan seçili yazı tipine yatık stil eklemiş olursunuz.</li>
+            </ul>
+        </li>
+        <li>Bir zengin metin kutusunun kullanışlı bir özelliği içeriğini zengin metin formatlı (RTF) bir dosya olarak kaydedebilmesi ve o biçimdeki bir dosyaadan yükleyebilmesidir.<ul>
+            <li>SaveFile fonksiyonu içeriği dosyaya kaydeder. Argüman olarak dosyanın sistemdeki tam adresini ister.</li>
+            <li>LoadFile fonksiyonu içeriği dosyadan yükler. Argüman olarak dosyanın sistemdeki tam adresini ister.</li>
+            </ul>
+        </li>
+        <li>Dosya açma/kaydetme diyaloglarını kullanıcıya dosya seçtirmek içn hazır kullanabilirsiniz.<ul>
+            <li><strong>SaveFileDialog</strong> ile kullanıcıya kaydedecek dosya adı ve klasörü belirleme şansı verirsiniz.</li>
+            <li><strong>SaveFileDialog</strong> türü bir nesne oluşturduktan sonra <strong>InitialDirectory</strong> ile onun açılış klasörünü belirleyebilirsiniz. Bunu atlarsanız, dialog açıldığında kullanıcının Belgeler (<em>Documents</em>) klasörünü gösterir.</li>
+            <li><strong>DefaultExt</strong> ile varsayılan dosya uzantısını belirleyebilirsiniz. Ayrıca dosya filtresi belirtmeden, yalnızca bu uzantıya sahip dosyalar görüntülenir ve yeni kaydedilecek dosya adına bu uzantı eklenir.</li>
+            <li><strong>Filter</strong> ile dialog formunun görüntüleyeceği varsa birden fazla uzantı seçebilirsiniz. Bu özellik, aşağıdaki gibi, açıklama metni ve uzantı tipinin dikey çubuk sembolüyle ayrıldığı, bu ikililerin de noktalı virgülle ayrıldığı bir dizgi gerektirir: <strong>&quot;Bitmap dosyaları|*.bmp;JPEG dosyaları|*.jpeg;PNG dosyaları|*.png&quot;</strong></li>
+            <li>Dsya seçici özellikleri belirledikten sonra diyalog formunu <strong>ShowDialog</strong> fonksiyonuyla görüntülersiniz. Diyalog formu uygulama formunun üzerinde kontrolü ele alır ve kullanıcı seçim yapıp OK (Tamam) ya da İptal (Cancel) düğmesine basmadan kapanmaz.</li>
+            <li><strong>ShowDialog</strong> fonksiyonunun sonucu <strong>DialogResult</strong> tründen bir adlandırılmış değerdir. Tamam tuşuna basılıp seçim onaylanmışsa sonuç <strong>DialogResult.OK</strong> olur. İptal durumunda sonuç <strong>DialogResult.Cancel</strong> olur. Diaog formunda Evet/Hayır seçenekleri vardıysa sonuç ya <strong>DialogResult.Yes</strong> ya da <strong>DialogResult.No</strong> olacaktır.</li>
+            <li>Olumlu yanıt durumunda <strong>DialogResult.OK</strong> sonucu mu gelmiş diye bakarsınız ve seçilen dosya adını diyalog nesnesinin <strong>FileName</strong> özelliğinden alırsınız. Tam dosya adresi için klasör adı da eklemeniz gerekebilir.</li>
+            <li><strong>SaveFileDialog</strong> ile tek bir dosya seçilebilir. Var olan bir dosya seçilmişse o dosya üzerinde kayıt yapıldığında dsyanın eski içeriği kaybolur.</li>
+            <li><strong>SaveFileDialog</strong> ile olmayan bir dosya adı kutuda elle yazılabilir. Bu dosyaya kayıt yapıldığında dosya o adla ve tercih edilen uzantıyla oluşturulur.</li>
+            <li>Dosya açmaya yarayan <strong>OpenFileDialog</strong> için <strong>InitialDirectory</strong>, <strong>DefaultExt</strong> ve <strong>Filter</strong> özellikleri ve de <strong>ShowDialog</strong> fonksiyonu aynı şekilde çalışır.</li>
+            <li><strong>OpenFileDialog</strong> için önemli bir fark: <strong>Multiselect</strong> özelliğiyle (<strong>true</strong> değeri aktararak) çoklu seçime izin verebilirsiniz.</li>
+            <li>Seçilen dosyaların adlarını da <strong>FileNames</strong> özelliğinden alabilirsiniz.</li>
+            <li><strong>OpenFileDialog</strong> ile var olmayan dosya adı elle yazılamaz.</li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>
