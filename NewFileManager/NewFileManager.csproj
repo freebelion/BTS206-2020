@@ -83,5 +83,8 @@
   <ItemGroup>
     <None Include="Resources\bmpKlasor.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="NewFileManager.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif">
+
+    <h1>NewFileManager Hakkında</h1>
+    <ul>
+        <li>Bu projede klasörler ve dosyaları bir görsel işletim sistemindeki gibi listeletecek yeni kontroller kullanıyoruz: <strong>TreeView</strong> (Ağaç Paneli ya da Organizasyon Paneli) ile <strong>ListView</strong> (ListePaneli). Bir de form penceresini kaydırılabilir bir sınır çizgisi ile ikiye bölen <strong>SplitContainer</strong> (Bölmeli Panel) kontrolünü kullandık.</li>
+        <li>Bu projede değişken adını <strong>KlasorPanel</strong> koyduğumuz <strong>TreeView</strong> kontrolünü seçilen bir ana klasör içindeki alt klasörleri hiyerarşik bir düzende listelemek için kullanıyoruz.<ul>
+            <li><strong>TreeView</strong> kontrolü alt klasörlerin ve onların da altlarındaki klasörlerin birbirleriyle olan üstlük-altlık ilişkilerini bir ağacın dallanma yapısı gibi görüntüler. Bu nedenle ona &quot;Ağaç Paneli&quot; de diyebiliriz.</li>
+            <li><strong>TreeView</strong> kontrolünün ağacı en üstte yer alan bir kök elemandan başlayıp yanlara ve aşağıya doğru dallanır. Elemanlar kontrolün <strong>Nodes</strong> koleksiyonuna eklenirler.</li>
+            <li><strong>Nodes</strong> koleksiyonunun elemanları <strong>TreeNode</strong> türü nesnelerdir. Sözcük anlamıyla bunlar &quot;ağaç düğümleri&quot;dir, yani dalların gövdeden ayrılma noktaları. Ama siz onları ağacın dalları gibi düşünebilirsiniz.</li>
+            <li>Bir <strong>TreeNode</strong> nesnesini oluştururken en azından nesnenin temsil edeceği ağaç paneli elemanının metin etiketini iletirsiniz. Bu etiket eleman üzerinde gözükecektir.</li>
+            <li><strong>TreeView</strong> kontrolünün <strong>ImageList</strong> özelliği elemanları temsil edecek simgelerin bir listesidir. Ağaç paneli kontrolünü bir organizasyon şeması için kullanıyor olsaydınız, bu listede organizasyonu oluşturan kişilerin rütbe veya kadro derecelerini belli eden simgeler olurdu. Bizimki gibi bir dosya yöneticisi uygulamasında ise klasörlerin türlerini, içeriklerini, erişim izinlerini vb. belli edecek simgeler olabilir.</li>
+            <li>Bu kontrolün simgeler listesini oluşturmak için <strong>Toolbox</strong> araç penceresinin &quot;Components&quot; kategorisi altından bir <strong>ImageList</strong> öğesi çekip uygulama formu üzerinde bırakırsınız. Sonra da bu öğenin özellikler tablosunda <strong>Images</strong> koleksiyonuna kendi dosya sisteminizden seçtiğiniz resimleri eklersiniz.</li>
+            <li><strong>ImageList</strong> öğesine ait diğer önemli özellikler listedeki resimlerin renk derinliğini/çeştliliğini belirleyen <strong>ColorDepth</strong> özelliği ve resim boyutlarını sınırlandıran <strong>ImageSize</strong> özelliğidir. Resimlerin kendi renk ayarları veya boyutları ne olursa olsun, <strong>ImageList</strong>&#39;e eklendiklerinde listenin ayarlarına göre yeniden renklendirilir veya boyutlandırılırlar ki sonuçlar (özellikle küçültme durumunda) siz tasarımcı programcının istediği gibi olmayabilir.</li>
+            <li><strong>TreeView</strong> kontrolü için bir eleman (bir <strong>TreeNode</strong> nesnesi) oluştururken elemanı temsil edecek simge resminin sıra numarasını belirtirsiniz. <strong>ImageList</strong> listesindeki o numaralı resim o elemanı temsil edecektir.</li>
+            <li><strong>TreeView</strong> kontrolünde bir eleman seçildiğinde bir değil, iki olay gerçekleşir: tam seçim yapılırken gerçekleşen <strong>BeforeSelect</strong> (seçimden önce) olayı ve seçim kesinleştikten sonra gerçekleşen <strong>AfterSelect</strong> olayı.</li>
+            <li>Eleman seçimlerini kontrol edip iptal etme şansınız olsun (<strong>Cancel</strong> adlı olay argümanına false değeri atarsınız) istiyorsanız, bunu <strong>BeforeSelect</strong> olayını yanıtlayan biir fonksiyonda yaparsınız.<ul>
+                <li>Eğer ağaç paneli elemanlarının temsil ettiği bazı klasörlere erişimi engllemek gibi bir niyetimiz olsaydı, bu olayı yanıtlayacak fonksiyon eklerdik.</li>
+                </ul>
+            </li>
+            <li>Eleman seçimine müdahale etmeyip de seçimle ilişkili bazı işlemler yapacaksanız, bunları da <strong>AfterSelect</strong> olayını yanıtlayan bir fonksiyonda gerçekleştirirsiniz.<ul>
+                <li>Ağaç paneli elemanı tıklandığında onun temsil ettiği klasörün içeriğini görüntüleyecek işlemleri <strong>AfterSelect</strong> olayını yanıtlayan fonksiyonda yaptırdık.</li>
+                </ul>
+            </li>
+            <li>Bir <strong>TreeView</strong> kontrolündeki her elemanın (<strong>TreeNode</strong> nesnesi) altında başka elemanlar olabilir. Alt elemanlar <strong>TreeNode</strong> nesnesinin <strong>Nodes</strong> koleksiyonuna eklenirler.</li>
+            <li>Ağaç panelindeki organizasyonu oluşturmak için <strong>KlasorPanel</strong> adlı kontrole en önce kök klasörü temsil eden tepe elemanı ekledik. Sonra KlasorlerListele adlı fonksiyonda alt klasörleri temsil eden elemanları bu tepe elemanın altına, yani tepe elemanın <strong>Nodes</strong> koleksiyonuna ekledik.</li>
+            <li><strong>KlasorlerListele</strong> fonksiyonu gerektikçe kendisini çağırarak (<em>recursive function</em>) alt klasörlerin altlarındaki klasörleri temsil eden daha alt elemanları ekledi.</li>
+            <li>Ağaç paneline eklenen her <strong>TreeNode</strong> nesnesine (<strong>Tag</strong> özelliğiyle) temsil ettiği klasörün bir referansını ekledik.</li>
+            <li>Ağaç panelinde seçilen elemanın temsil ettiği klasörü işte bu <strong>Tag</strong> özelliğine bakar belirledik.</li>
+            <li>Kök klasörü kullanıcının &quot;Belgeler&quot; klasörü olarak seçtik. Bunun için <strong>Environment</strong> sınıfını nasıl kullandığımızı anlamak için &quot;MyFileManager&quot; projesinin açıklamalarına bakın.<ul>
+                <li>O açıklamalarda klasörleri temsil eden <strong>DirectoryInfo</strong> ile dosyaları temsil eden <strong>FileInfo</strong> sınıfları hakkında da açıklamalar bulacaksınız.</li>
+                </ul>
+            </li>
+            </ul>
+        </li>
+        <li>Bu projede <strong>KlasorPanel</strong>&#39;de seçilen klasör içeriğindeki dosyaları <strong>ListView</strong> (Liste Paneli) türü bir kontrolde listelettik.<ul>
+            <li><strong>ListView</strong> kontrolü bir liste kutusu (<strong>ListBox</strong>) gibi elemanlarını listeler, ama onları birer simge resmiyle temsil edebilir ve hem soldan sağa, hem de alt alta, bir matris düzeninde listeleme seçenekleri vardır.</li>
+            <li><strong>ListView</strong> elemanlarının her biri <strong>ListViewItem</strong> adlı özel bir türden nesnelerdir. Bu türden bir nesne en azından elemanın etiket metniyle oluşturulur, ama simge resminin sıra numarası gibi ek ayrıntılar da içerebilir.</li>
+            <li><strong>ListView</strong> için liste düzenini belirleyen özellik <strong>View</strong> özelliğidir. Bu özellik <strong>View.SmallIcon</strong> (küçük simgeler), <strong>View.LargeIcon</strong> (büyük simgeler), <strong>View.List</strong> (liste), <strong>View.Tile</strong> (döşeme) adlandırılmış değerlerinden birini alır.</li>
+            <li>Bir liste panelinde eleman simgeleri küçük simgeler içeren <strong>SmallImageList</strong> koleksiyonundan veya büyük simgeler içeren <strong>LargeImageList</strong> koleksiyonundan seçilebilir. </li>
+            <li>Resim listesi özelliklerini belirlemek için <strong>TreeView</strong> kontrolünde açıkladığımız gibi ImageList türü liste öğeleri oluşturursunuz.</li>
+            <li><strong>ListView</strong> için <strong>LabelEdit</strong> özelliği <strong>true</strong> ise kullanıcı liste paneli elemanlarının etiket metnini değilştirebilir. Ama bu değişikliği elemanın temsil ettiği nesneye (bizim projede dosya) yansıtmak size kalmıştır. Biz etiket değişikliğinden sonra gerçekleşen <strong>AfterLabelEdit</strong> olayı yanıtlayan bir fonksiyonda dosya adını etikete göre değiştirmeye çalıştık ama beceremeyip yarım bıraktık. Aslında bir dosya için öyle her ad kabul edilmeyeceğine göre, belki de etiket değişikliği kesinleşmeden önce gerçekleşen <strong>BeforeLabelEdit</strong> olayını yanıtlasaydık, dosya adı olarak gerçeli olmayan etiket değişikliklerini iptal ettirebilirdik.</li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>
