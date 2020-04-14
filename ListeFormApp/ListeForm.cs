@@ -15,7 +15,6 @@ namespace ListeFormApp
         public ListeForm()
         {
             InitializeComponent();
-            lbListe.Dock = DockStyle.
         }
 
         private void lbListe_SelectedIndexChanged(object sender, EventArgs e)
@@ -25,7 +24,8 @@ namespace ListeFormApp
 
         private void ListeForm_Load(object sender, EventArgs e)
         {
-            lbListe.SelectionMode = SelectionMode.
+            lbListe.Items.Add("Hercai");
+            lbListe.SelectedIndex = lbListe.Items.Count - 1;
         }
 
         private void lbListe_KeyDown(object sender, KeyEventArgs e)
